@@ -7,19 +7,46 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.aescttgt.appsqlserverudv.ui.home.HomeFragment"
-        android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        android:name="com.aescttgt.appsqlserverudv.ui.DashboardFragment"
+        android:label="@string/dashboard"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_nav_home_to_partidoDetalleFragment"
+            app:destination="@id/partidoDetalleFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_gallery"
-        android:name="com.aescttgt.appsqlserverudv.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
+        android:name="com.aescttgt.appsqlserverudv.ui.AgregarFragment"
+        android:label="@string/agregar"
         tools:layout="@layout/fragment_gallery" />
 
     <fragment
         android:id="@+id/nav_slideshow"
-        android:name="com.aescttgt.appsqlserverudv.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
+        android:name="com.aescttgt.appsqlserverudv.ui.ListadoFragment"
+        android:label="@string/listado"
         tools:layout="@layout/fragment_slideshow" />
+
+    <fragment
+        android:id="@+id/nav_actualizar"
+        android:name="com.aescttgt.appsqlserverudv.ui.ActualizarFragment"
+        android:label="@string/actualizar"
+        tools:layout="@layout/fragment_actualizar" />
+
+    <fragment
+        android:id="@+id/nav_eliminar"
+        android:name="com.aescttgt.appsqlserverudv.ui.EliminarFragment"
+        android:label="@string/eliminar"
+        tools:layout="@layout/fragment_eliminar" />
+
+    <fragment
+        android:id="@+id/nav_configuracion"
+        android:name="com.aescttgt.appsqlserverudv.ui.ConfiguracionFragment"
+        android:label="@string/configuracion"
+        tools:layout="@layout/fragment_configuracion" />
+    <fragment
+        android:id="@+id/partidoDetalleFragment"
+        android:name="com.aescttgt.appsqlserverudv.ui.dashView.PartidoDetalleFragment"
+            android:label="Partido Detalle"
+        tools:layout="@layout/fragment_partido_detalle" />
 </navigation>

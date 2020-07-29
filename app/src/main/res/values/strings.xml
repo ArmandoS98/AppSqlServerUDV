@@ -10,4 +10,22 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="agregar">Agregar</string>
+    <string name="listado">Listado</string>
+    <string name="actualizar">Actualizar</string>
+    <string name="eliminar">Eliminar</string>
+
+    <string name="error_sms">Error</string>
+    <string name="confirm_text">OK</string>
+    <string name="key_validar_primera_vez">com.aescttgt.posbi2020</string>
+    <string name="destino">destino</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="configuracion">Configuracionr</string>
+    <string name="ip">ip</string>
+    <string name="database_name">data_name</string>
+    <string name="user_name">user_name</string>
+    <string name="password">password</string>
 </resources>

@@ -1,0 +1,707 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.dashView.PartidoDetalleFragment">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="5dp"
+                android:background="@drawable/backgroun_tarjeta">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/progress_circular"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="12.5dp"
+                    android:src="@drawable/soccerball" />
+
+                <TextView
+                    android:id="@+id/tv_goles"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/real1"
+                    android:layout_below="@+id/progress_circular"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="12.5dp"
+                    android:text="¡GOOOOL!\n89'"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorText"
+                    android:textStyle="bold" />
+
+                <RelativeLayout
+                    android:id="@+id/real1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:background="@drawable/backgroun_tarjeta">
+
+                    <RadioGroup
+                        android:id="@+id/radioGroups"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
+
+                        <RadioButton
+                            android:id="@+id/rbEfectivo"
+                            android:layout_width="0dp"
+                            android:layout_height="35dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/rb_pers"
+                            android:button="@android:color/transparent"
+                            android:checked="true"
+                            android:fontFamily="sans-serif-condensed"
+                            android:paddingLeft="8dp"
+                            android:paddingRight="8dp"
+                            android:text=" En Efectivo"
+                            android:textAlignment="textEnd"
+                            android:textColor="@drawable/txt_rb"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="-"
+                            android:textColor="@color/colorText"
+                            android:textSize="30sp" />
+
+                        <RadioButton
+                            android:id="@+id/rbTarjeta"
+                            android:layout_width="0dp"
+                            android:layout_height="35dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/rb_pers"
+                            android:button="@android:color/transparent"
+                            android:fontFamily="sans-serif-condensed"
+                            android:paddingLeft="8dp"
+                            android:paddingRight="8dp"
+                            android:text="Con Tarjeta"
+                            android:textAlignment="textStart"
+                            android:textColor="@drawable/txt_rb"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                    </RadioGroup>
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/appBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorText"
+                android:clickable="true"
+                android:elevation="0dp"
+                app:elevation="0dp" />
+
+            <RelativeLayout
+                android:id="@+id/vpPaginas"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <!--        Tab  1-->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerview"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="visible" />
+
+                <!--        Tab  2-->
+                <RelativeLayout
+                    android:id="@+id/real2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:id="@+id/tv_tab2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="15dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/campus_new" />
+
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="30dp">
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/j11"
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:layout_centerHorizontal="true"
+                            android:src="@drawable/bgcolor"
+                            app:civ_border_width="2dp" />
+
+                        <TextView
+                            android:id="@+id/tvjnumero11"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="7dp"
+                            android:text="17"
+                            android:textAlignment="center"
+                            android:textColor="@color/colorText"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:id="@+id/tvjnombre11"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/j11"
+                            android:text="Armando"
+                            android:textColor="@color/colorText"
+                            android:textSize="10sp" />
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linlayou"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="90dp"
+                        android:orientation="horizontal">
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="15dp">
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/j1"
+                                android:layout_width="36dp"
+                                android:layout_height="36dp"
+                                android:layout_centerHorizontal="true"
+                                android:src="@drawable/bgcolor"
+                                app:civ_border_width="2dp" />
+
+                            <TextView
+                                android:id="@+id/tvjnumero1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="7dp"
+                                android:text="17"
+                                android:textAlignment="center"
+                                android:textColor="@color/colorText"
+                                android:textSize="15sp" />
+
+                            <TextView
+                                android:id="@+id/tvjnombre1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/j1"
+                                android:text="Armando"
+                                android:textColor="@color/colorText"
+                                android:textSize="10sp" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="15dp">
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/j2"
+                                android:layout_width="36dp"
+                                android:layout_height="36dp"
+                                android:layout_centerHorizontal="true"
+                                android:src="@drawable/bgcolor"
+                                app:civ_border_width="2dp" />
+
+                            <TextView
+                                android:id="@+id/tvjnumero2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="7dp"
+                                android:text="17"
+                                android:textColor="@color/colorText"
+                                android:textSize="15sp" />
+
+                            <TextView
+                                android:id="@+id/tvjnombre2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/j2"
+                                android:text="Armando"
+                                android:textColor="@color/colorText"
+                                android:textSize="10sp" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="15dp">
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/j3"
+                                android:layout_width="36dp"
+                                android:layout_height="36dp"
+                                android:layout_centerHorizontal="true"
+                                android:src="@drawable/bgcolor"
+                                app:civ_border_width="2dp" />
+
+                            <TextView
+                                android:id="@+id/tvjnumero3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="7dp"
+                                android:text="17"
+                                android:textColor="@color/colorText"
+                                android:textSize="15sp" />
+
+                            <TextView
+                                android:id="@+id/tvjnombre3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/j3"
+                                android:text="Armando"
+                                android:textColor="@color/colorText"
+                                android:textSize="10sp" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="15dp">
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/j4"
+                                android:layout_width="36dp"
+                                android:layout_height="36dp"
+                                android:layout_centerHorizontal="true"
+                                android:src="@drawable/bgcolor"
+                                app:civ_border_width="2dp" />
+
+                            <TextView
+                                android:id="@+id/tvjnumero4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="7dp"
+                                android:text="17"
+                                android:textColor="@color/colorText"
+                                android:textSize="15sp" />
+
+                            <TextView
+                                android:id="@+id/tvjnombre4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/j4"
+                                android:maxLength="10"
+                                android:text="Armando"
+                                android:textColor="@color/colorText"
+                                android:textSize="10sp" />
+                        </RelativeLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linlayou1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/linlayou"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="20dp"
+                        android:orientation="horizontal">
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="15dp">
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/j5"
+                                android:layout_width="36dp"
+                                android:layout_height="36dp"
+                                android:layout_centerHorizontal="true"
+                                android:src="@drawable/bgcolor"
+                                app:civ_border_width="2dp" />
+
+                            <TextView
+                                android:id="@+id/tvjnumero5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="7dp"
+                                android:text="17"
+                                android:textColor="@color/colorText"
+                                android:textSize="15sp" />
+
+                            <TextView
+                                android:id="@+id/tvjnombre5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/j5"
+                                android:text="Armando"
+                                android:textColor="@color/colorText"
+                                android:textSize="10sp" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="15dp">
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/j6"
+                                android:layout_width="36dp"
+                                android:layout_height="36dp"
+                                android:layout_centerHorizontal="true"
+                                android:src="@drawable/bgcolor"
+                                app:civ_border_width="2dp" />
+
+                            <TextView
+                                android:id="@+id/tvjnumero6"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="7dp"
+                                android:text="17"
+                                android:textColor="@color/colorText"
+                                android:textSize="15sp" />
+
+                            <TextView
+                                android:id="@+id/tvjnombre6"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/j6"
+                                android:text="Armando"
+                                android:textColor="@color/colorText"
+                                android:textSize="10sp" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="15dp">
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/j7"
+                                android:layout_width="36dp"
+                                android:layout_height="36dp"
+                                android:layout_centerHorizontal="true"
+                                android:src="@drawable/bgcolor"
+                                app:civ_border_width="2dp" />
+
+                            <TextView
+                                android:id="@+id/tvjnumero7"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="7dp"
+                                android:text="17"
+                                android:textColor="@color/colorText"
+                                android:textSize="15sp" />
+
+                            <TextView
+                                android:id="@+id/tvjnombre7"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/j7"
+                                android:text="Armando"
+                                android:textColor="@color/colorText"
+                                android:textSize="10sp" />
+                        </RelativeLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linlayou2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/linlayou1"
+                        android:layout_centerHorizontal="true"
+                        android:orientation="horizontal">
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="15dp">
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/j8"
+                                android:layout_width="36dp"
+                                android:layout_height="36dp"
+                                android:layout_centerHorizontal="true"
+                                android:src="@drawable/bgcolor"
+                                app:civ_border_width="2dp" />
+
+                            <TextView
+                                android:id="@+id/tvjnumero8"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="7dp"
+                                android:text="17"
+                                android:textColor="@color/colorText"
+                                android:textSize="15sp" />
+
+                            <TextView
+                                android:id="@+id/tvjnombre8"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/j8"
+                                android:text="Armando"
+                                android:textColor="@color/colorText"
+                                android:textSize="10sp" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="15dp">
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/j9"
+                                android:layout_width="36dp"
+                                android:layout_height="36dp"
+                                android:layout_centerHorizontal="true"
+                                android:src="@drawable/bgcolor"
+                                app:civ_border_width="2dp" />
+
+                            <TextView
+                                android:id="@+id/tvjnumero9"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="7dp"
+                                android:text="17"
+                                android:textColor="@color/colorText"
+                                android:textSize="15sp" />
+
+                            <TextView
+                                android:id="@+id/tvjnombre9"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/j9"
+                                android:text="Armando"
+                                android:textColor="@color/colorText"
+                                android:textSize="10sp" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="15dp">
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/j10"
+                                android:layout_width="36dp"
+                                android:layout_height="36dp"
+                                android:layout_centerHorizontal="true"
+                                android:src="@drawable/bgcolor"
+                                app:civ_border_width="2dp" />
+
+                            <TextView
+                                android:id="@+id/tvjnumero10"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="7dp"
+                                android:text="17"
+                                android:textColor="@color/colorText"
+                                android:textSize="15sp" />
+
+                            <TextView
+                                android:id="@+id/tvjnombre10"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/j10"
+                                android:text="Armando"
+                                android:textColor="@color/colorText"
+                                android:textSize="10sp" />
+                        </RelativeLayout>
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tv_titulo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_tab2"
+                        android:layout_margin="15dp"
+                        android:text="Aliniaciones"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorTextBlack"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerviewtb2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_below="@+id/tv_titulo" />
+
+                </RelativeLayout>
+
+
+                <!--        Tab  3-->
+                <androidx.cardview.widget.CardView
+                    android:visibility="gone"
+                    android:id="@+id/cardviewtb3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentStart="true"
+                                android:layout_marginStart="10dp"
+                                android:text="Nombre Equipo"
+                                android:textColor="@color/colorTextBlack"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tv_nombre_equipo"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginEnd="10dp"
+                                android:text="Nombre test here" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentStart="true"
+                                android:layout_marginStart="10dp"
+                                android:text="Minutos Jugados"
+                                android:textColor="@color/colorTextBlack"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tv_min_jugados"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginEnd="10dp"
+                                android:text="Nombre test here" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentStart="true"
+                                android:layout_marginStart="10dp"
+                                android:text="Total Tarejta Amarillas"
+                                android:textColor="@color/colorTextBlack"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tv_total_amarillas"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginEnd="10dp"
+                                android:text="Nombre test here" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentStart="true"
+                                android:layout_marginStart="10dp"
+                                android:text="Total Tarejta Rojas"
+                                android:textColor="@color/colorTextBlack"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tv_total_rojas"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginEnd="10dp"
+                                android:text="Nombre test here" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentStart="true"
+                                android:layout_marginStart="10dp"
+                                android:text="Total de Goles"
+                                android:textColor="@color/colorTextBlack"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tv_total_goles"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginEnd="10dp"
+                                android:text="Nombre test here" />
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+
+            </RelativeLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
+</LinearLayout>

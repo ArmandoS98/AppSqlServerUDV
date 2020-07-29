@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cartita"
+    android:layout_width="match_parent"
+    android:layout_height="190dp"
+    android:layout_margin="5dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?android:selectableItemBackground"
+    app:cardCornerRadius="4dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <LinearLayout
+            android:id="@+id/li_primerio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <TextView
+                android:id="@+id/tv_nombre_campeonato"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_weight="1.5"
+                android:text="Liga Guatemalteca"
+                android:textAllCaps="true"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="8dp" />
+
+            <TextView
+                android:id="@+id/tv_nombre_estado"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_weight="0.5"
+                android:text="Finalizado"
+                android:textColor="@color/colorTextBlack"
+                android:textAlignment="textEnd"
+                android:textAllCaps="true"
+                android:textSize="8dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/li_primerio"
+            android:orientation="horizontal"
+            android:weightSum="4">
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.2">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/profile_img_equipo_local"
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="10dp"
+                        android:src="@drawable/logo"
+                        app:civ_border_color="#FF000000" />
+
+                    <TextView
+                        android:id="@+id/tv_nombre_equipo_local"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/profile_img_equipo_local"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="5dp"
+                        android:maxLines="1"
+                        android:text="Equipo Local"
+                        android:textAllCaps="true"
+                        android:textColor="@color/colorTextBlack"
+                        android:textSize="8dp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.6">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:orientation="horizontal"
+                    android:weightSum="3">
+
+                    <TextView
+                        android:id="@+id/tv_goles_local"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="1"
+                        android:layout_marginStart="10dp"
+                        android:textColor="@color/colorTextBlack"
+                        android:textSize="30sp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="-"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorTextBlack"
+                        android:textSize="30sp" />
+
+                    <TextView
+                        android:id="@+id/tv_goles_visitante"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="1"
+                        android:layout_marginEnd="10dp"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/colorTextBlack"
+                        android:textSize="30sp" />
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.2">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/profile_img_equipo_visitante"
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="10dp"
+                        android:src="@drawable/logo2"
+                        app:civ_border_color="#FF000000" />
+
+                    <TextView
+                        android:id="@+id/tv_nombre_equipo_visitante"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/profile_img_equipo_visitante"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginEnd="10dp"
+                        android:text="Equipo Visitante"
+                        android:textAlignment="textEnd"
+                        android:maxLines="1"
+                        android:textAllCaps="true"
+                        android:textColor="@color/colorTextBlack"
+                        android:textSize="8dp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+            </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

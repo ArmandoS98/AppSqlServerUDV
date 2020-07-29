@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/botton_navigation_ingresar"
+    app:startDestination="@id/jugadorIngresoFragment">
+
+    <fragment
+        android:id="@+id/jugadorIngresoFragment"
+        android:name="com.aescttgt.appsqlserverudv.ui.navViews.JugadorIngresoFragment"
+        android:label="fragment_jugador_ingreso"
+        tools:layout="@layout/fragment_jugador_ingreso" />
+    <fragment
+        android:id="@+id/equipoIngresoFragment"
+        android:name="com.aescttgt.appsqlserverudv.ui.navViews.EquipoIngresoFragment"
+        android:label="fragment_equipo_ingreso"
+        tools:layout="@layout/fragment_equipo_ingreso" />
+    <fragment
+        android:id="@+id/campeonatoFragment"
+        android:name="com.aescttgt.appsqlserverudv.ui.navViews.EntrenadorFragment"
+        android:label="fragment_campeonato"
+        tools:layout="@layout/fragment_campeonato" />
+</navigation>
