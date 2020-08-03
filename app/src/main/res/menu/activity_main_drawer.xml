@@ -6,11 +6,11 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_menu_slideshow"
             android:title="@string/dashboard" />
         <item
             android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/ic_menu_slideshow"
             android:title="@string/agregar" />
         <item
             android:id="@+id/nav_slideshow"
@@ -20,10 +20,21 @@
             android:id="@+id/nav_actualizar"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="@string/actualizar" />
+
+        <item
+            android:id="@+id/nav_agregar_Partido"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="@string/agregar_partido" />
+
         <item
             android:id="@+id/nav_eliminar"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="@string/eliminar" />
+
+        <item
+            android:id="@+id/nav_eLiminar_Entrenador"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="@string/eliminar_entrenador" />
 
         <item
             android:id="@+id/nav_configuracion"

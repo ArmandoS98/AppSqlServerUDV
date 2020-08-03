@@ -7,12 +7,12 @@
 
     <fragment
         android:id="@+id/jugadorIngresoFragment"
-        android:name="com.aescttgt.appsqlserverudv.ui.navViews.JugadorIngresoFragment"
-        android:label="fragment_jugador_ingreso"
+        android:name="com.aescttgt.appsqlserverudv.ui.navViews.EquipoDetalleFragment"
+        android:label="Equipo Detalle"
         tools:layout="@layout/fragment_jugador_ingreso" />
     <fragment
         android:id="@+id/equipoIngresoFragment"
-        android:name="com.aescttgt.appsqlserverudv.ui.navViews.EquipoIngresoFragment"
+        android:name="com.aescttgt.appsqlserverudv.ui.navViews.JugadoresFragment"
         android:label="fragment_equipo_ingreso"
         tools:layout="@layout/fragment_equipo_ingreso" />
     <fragment

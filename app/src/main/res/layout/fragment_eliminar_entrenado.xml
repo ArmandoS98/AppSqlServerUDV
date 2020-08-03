@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.EliminarEntrenadoFragment">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilFechaNac"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tilNombreJugador"
+        android:layout_margin="15dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+
+            android:id="@+id/txtFechaNac"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            android:hint="Nombre Entrenador"
+            android:maxLength="50"
+            android:textAlignment="center"
+            android:textSize="20dp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+    <include
+        layout="@layout/boton_eliminar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tilFechaNac"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>

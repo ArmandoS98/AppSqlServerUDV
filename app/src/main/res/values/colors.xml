@@ -4,6 +4,9 @@
     <color name="colorPrimaryDark">#FFA000</color>
     <color name="colorAccent">#FF5722</color>
 
+    <color name="colorGooglePlus">#DD4B39</color>
+    <color name="colorGooglePlusDark">#B92D21</color>
+
     <color name="colorText">#FFFFFF</color>
     <color name="colorTextBlack">#000000</color>
 </resources>

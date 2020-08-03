@@ -31,6 +31,10 @@ import com.aescttgt.appsqlserverudv.ViewAnimatorSlideUpDown.AnimSD;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.tabs.TabLayout;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.json.XML;
+
 import java.sql.CallableStatement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -161,7 +165,11 @@ public class PartidoDetalleFragment extends Fragment implements RadioGroup.OnChe
 
         vpPaginas = view.findViewById(R.id.vpPaginas);
         consultarJugadores(mDashPartido.getId_equipo_local());
-        consultarGoles(mDashPartido.getId_equipo_local(), mDashPartido.getId_partido());
+        if (mDashPartido.getGoles_Local() > 0)
+            consultarGoles(mDashPartido.getId_equipo_local(), mDashPartido.getId_partido());
+        else
+            mTextViewGoles.setText("");
+
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -209,7 +217,11 @@ public class PartidoDetalleFragment extends Fragment implements RadioGroup.OnChe
     private void updateUI(View v, int screenStyle) {
         if (screenStyle == R.id.rbTarjeta) {
             eslocal = false;
-            consultarGoles(mDashPartido.getId_equipo_visitante(), mDashPartido.getId_partido());
+            if (mDashPartido.getGoles_Visitante() > 0)
+                consultarGoles(mDashPartido.getId_equipo_visitante(), mDashPartido.getId_partido());
+            else
+                mTextViewGoles.setText("");
+
             switch (tabLayout.getSelectedTabPosition()) {
                 case 0:
                     consultarJugadores(mDashPartido.getId_equipo_visitante());
@@ -224,7 +236,11 @@ public class PartidoDetalleFragment extends Fragment implements RadioGroup.OnChe
 
         } else if (screenStyle == R.id.rbEfectivo) {
             eslocal = true;
-            consultarGoles(mDashPartido.getId_equipo_local(), mDashPartido.getId_partido());
+            if (mDashPartido.getGoles_Local() > 0)
+                consultarGoles(mDashPartido.getId_equipo_local(), mDashPartido.getId_partido());
+            else
+                mTextViewGoles.setText("");
+
             switch (tabLayout.getSelectedTabPosition()) {
                 case 0:
                     consultarJugadores(mDashPartido.getId_equipo_local());
@@ -260,9 +276,9 @@ public class PartidoDetalleFragment extends Fragment implements RadioGroup.OnChe
                 mPais.setFec_nacimiento(rs.getDate("fec_nacimiento"));
                 mPais.setStatus_jugador(rs.getString("status_jugador"));
                 mPais.setNombre_pais(rs.getString("nombre_pais"));
+                mPais.setId_pais(rs.getInt("id_pais"));
                 pojos.add(mPais);
             }
-
 
             Log.e(TAG, "consultar: Paices respuesta: " + pojos);
 
@@ -278,13 +294,14 @@ public class PartidoDetalleFragment extends Fragment implements RadioGroup.OnChe
 
     private void consultarGoles(int id_equipo, int id_partido) {
         try {
-            String sql = "SELECT min_gol FROM Gol g WHERE id_partido = " + id_partido + " AND estado = " + id_equipo + " ORDER BY min_gol ASC ";
+            String sql = "SELECT min_gol, cantidad FROM Gol g WHERE id_partido = " + id_partido + " AND estado = " + id_equipo + " ORDER BY min_gol ASC ";
             PreparedStatement pst = DatabaseConnection.getInstance(getContext()).getConnection().prepareStatement(sql);
             ResultSet rs = pst.executeQuery();
 
             String goles = "¡GOOOOL!\n";
             while (rs.next()) {
-                goles += rs.getFloat("min_gol") + "', ";
+                if (rs.getInt("cantidad") > 0)
+                    goles += rs.getFloat("min_gol") + "', ";
             }
             mTextViewGoles.setText(goles.substring(1, (goles.length() - 2)));
             rs.close();
@@ -363,9 +380,10 @@ public class PartidoDetalleFragment extends Fragment implements RadioGroup.OnChe
 
     private void consultaEstadistica(int id_equipo) {
         try {
-            String storedProcudureCall = "{call EstadisticasPorEquipo(?)};";
+            String storedProcudureCall = "{call EstadisticasPorEquipo(?,?)};";
             CallableStatement cst = DatabaseConnection.getInstance(getContext()).getConnection().prepareCall(storedProcudureCall);
             cst.setInt(1, id_equipo);
+            cst.setInt(2,mDashPartido.getId_partido());
             ResultSet rs = cst.executeQuery();
 
             if (rs.next()) {

@@ -18,7 +18,7 @@
         android:layout_height="86dp"
         android:contentDescription="@string/nav_header_desc"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
-        android:src="@drawable/logo"
+        android:src="@drawable/leonardo"
         app:civ_border_width="2dp"/>
 
     <TextView
@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
         android:textColor="@color/colorTextBlack"
-        android:text="UDV"
+        android:text="Leonardo Da Vinci"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
     <TextView

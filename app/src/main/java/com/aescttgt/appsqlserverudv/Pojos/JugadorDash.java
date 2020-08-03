@@ -7,6 +7,7 @@ import java.util.Date;
 
 public class JugadorDash implements Parcelable {
     private int id_jugador;
+    private int id_pais;
     private String nombre_jugador;
     private Date fec_nacimiento;
     private String status_jugador;
@@ -15,8 +16,9 @@ public class JugadorDash implements Parcelable {
     public JugadorDash() {
     }
 
-    public JugadorDash(int id_jugador, String nombre_jugador, Date fec_nacimiento, String status_jugador, String nombre_pais) {
+    public JugadorDash(int id_jugador, int id_pais, String nombre_jugador, Date fec_nacimiento, String status_jugador, String nombre_pais) {
         this.id_jugador = id_jugador;
+        this.id_pais = id_pais;
         this.nombre_jugador = nombre_jugador;
         this.fec_nacimiento = fec_nacimiento;
         this.status_jugador = status_jugador;
@@ -25,6 +27,7 @@ public class JugadorDash implements Parcelable {
 
     protected JugadorDash(Parcel in) {
         id_jugador = in.readInt();
+        id_pais = in.readInt();
         nombre_jugador = in.readString();
         status_jugador = in.readString();
         nombre_pais = in.readString();
@@ -48,6 +51,14 @@ public class JugadorDash implements Parcelable {
 
     public void setId_jugador(int id_jugador) {
         this.id_jugador = id_jugador;
+    }
+
+    public int getId_pais() {
+        return id_pais;
+    }
+
+    public void setId_pais(int id_pais) {
+        this.id_pais = id_pais;
     }
 
     public String getNombre_jugador() {
@@ -90,6 +101,7 @@ public class JugadorDash implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(id_jugador);
+        dest.writeInt(id_pais);
         dest.writeString(nombre_jugador);
         dest.writeString(status_jugador);
         dest.writeString(nombre_pais);

@@ -5,35 +5,32 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.Spinner;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.aescttgt.appsqlserverudv.Adaptadores.JugadorAdapterSub;
 import com.aescttgt.appsqlserverudv.Connection.DatabaseConnection;
-import com.aescttgt.appsqlserverudv.Pojos.Jugador;
-import com.aescttgt.appsqlserverudv.Pojos.Pais;
 import com.aescttgt.appsqlserverudv.R;
 import com.aescttgt.appsqlserverudv.Utils.CustomDialogs;
+import com.google.android.material.textfield.TextInputEditText;
 
-import java.sql.PreparedStatement;
+import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.Objects;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
-import kotlin.reflect.KFunction;
 
-public class ListadoFragment extends Fragment {
-    private static final String TAG = "GalleryFragment";
-    private RecyclerView mRecyclerView;
-    //    private ConsultaAdapter mConsultaAdapter;
-    private JugadorAdapterSub mConsultaAdapter;
+public class ListadoFragment extends Fragment implements View.OnClickListener {
+    private static final String TAG = "ListadoFragment";
     private SweetAlertDialog pDialog;
+    private TextInputEditText mTextInputEditTextNombreEquipo;
+    private Spinner mSpinnerEntrenadores;
+    private Button mButtonGuardar;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -45,77 +42,86 @@ public class ListadoFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mRecyclerView = view.findViewById(R.id.recyclerview);
 
-        pDialog = new CustomDialogs(getContext()).dialogLoading("Consultado Datos");
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-
-                Objects.requireNonNull(getActivity()).runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        consultar();
-                    }
-                });
-            }
-        }).start();
+        mTextInputEditTextNombreEquipo = view.findViewById(R.id.txtNombreJugador);
+        mSpinnerEntrenadores = view.findViewById(R.id.tilNacionalidad);
+        mButtonGuardar = view.findViewById(R.id.btn_guardar);
+        mSpinnerEntrenadores.setAdapter(ObtenerListadoEntrenadores());
+        mSpinnerEntrenadores.setSelection(0);
+        mButtonGuardar.setOnClickListener(this);
     }
 
-    private void consultar() {
+
+    @Override
+    public void onClick(View v) {
+        if (v.getId() == R.id.btn_guardar)
+            actulizarInformaicon();
+    }
+
+    private ArrayAdapter<String> ObtenerListadoEntrenadores() {
         try {
+            String storedProcudureCall = "{call ObtenerListadoEntrenadores};";
+            CallableStatement cst = DatabaseConnection.getInstance(getContext()).getConnection().prepareCall(storedProcudureCall);
+            ResultSet rs = cst.executeQuery();
 
-            PreparedStatement pst = DatabaseConnection.getInstance(getContext()).getConnection().prepareStatement("SELECT * FROM Pais");
-            ResultSet rs = pst.executeQuery();
-
-            ArrayList<Pais> pojos = new ArrayList<>();
+            ArrayList<String> pojos = new ArrayList<>();
             while (rs.next()) {
-                Pais mPais = new Pais();
-                mPais.setId(rs.getInt("id_pais"));
-                mPais.setNombre_pais(rs.getString("nombre_pais"));
-                pojos.add(mPais);
+                String n_pais = "";
+                n_pais = rs.getString("nom_entrenador");
+                pojos.add(n_pais);
             }
 
-
-            Log.e(TAG, "consultar: Paices respuesta: " + pojos);
-
-
-          /*  ArrayList<Jugador> pojos = new ArrayList<>();
-            while (rs.next()) {
-                Jugador pojosql = new Jugador();
-//                pojosql.setC_JUGADOR(rs.getCharacterStream("C_JUGADOR"));
-                pojosql.setN_JUGADOR(rs.getString("N_JUGADOR"));
-                pojosql.setD_NACIMIENTO(rs.getDate("D_NACIMIENTO"));
-                pojos.add(pojosql);
-            }*/
-        /*    ArrayList<Pojosql> pojos = new ArrayList<>();
-            while (rs.next()) {
-                Pojosql pojosql = new Pojosql();
-                pojosql.setId(rs.getInt("id"));
-                pojosql.setCampo1(rs.getString("campo_1"));
-                pojosql.setCampo2(rs.getString("campo_2"));
-                pojos.add(pojosql);
-            }*/
             rs.close();
-            pst.close();
+            cst.close();
 
-            //Lo cargamos
-//            initRecyclerView(pojos);
-            pDialog.dismissWithAnimation();
-            Toast.makeText(getContext(), "DB CONSULTADA CON EXITO!", Toast.LENGTH_SHORT).show();
+            ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, pojos) {
+                @NonNull
+                @Override
+                public View getView(int position, View convertView, @NonNull ViewGroup parent) {
+                    View v = super.getView(position, convertView, parent);
+                    if (position == getCount()) {
+                        ((TextView) v.findViewById(android.R.id.text1)).setText("");
+                        ((TextView) v.findViewById(android.R.id.text1)).setHint(getItem(getCount()));
+                    }
+                    return v;
+                }
+
+                @Override
+                public int getCount() {
+                    return super.getCount() - 1;
+                }
+            };
+            dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+            return dataAdapter;
+
+
         } catch (Exception e) {
             Log.e(TAG, "insetar: Error: " + e.getMessage());
         }
-
+        return null;
     }
 
-    private void initRecyclerView(ArrayList<Jugador> valores) {
-        if (mConsultaAdapter == null) {
-            mConsultaAdapter = new JugadorAdapterSub(getContext(), valores);
+    private void actulizarInformaicon() {
+        try {
+            int pos = (int) (mSpinnerEntrenadores.getSelectedItemId() + 1);
+            String storedProcudureCall = "{call InsertarEquipo(?,?)};";
+            CallableStatement cst = DatabaseConnection.getInstance(getContext()).getConnection().prepareCall(storedProcudureCall);
+            cst.setString(1, mTextInputEditTextNombreEquipo.getText().toString());
+            cst.setInt(2, pos);
+            int rs = cst.executeUpdate();
+
+            if (rs > 0)
+                pDialog = new CustomDialogs(getContext()).dialogResult("Equipo Ingresado Corerctamente!").setConfirmClickListener(sweetAlertDialog -> pDialog.dismissWithAnimation());
+
+
+            Log.e(TAG, "actulizarInformaicon: Filas Fectadas: " + rs);
+
+            cst.close();
+        } catch (Exception e) {
+            Log.e(TAG, "insetar: Error: " + e.getMessage());
         }
-
-        mRecyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2, RecyclerView.VERTICAL, false));
-        mRecyclerView.setAdapter(mConsultaAdapter);
     }
+
 
 }

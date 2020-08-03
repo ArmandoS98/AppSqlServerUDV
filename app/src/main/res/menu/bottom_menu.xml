@@ -5,7 +5,7 @@
     <item
         android:id="@+id/jugadorIngresoFragment"
         android:icon="@drawable/ic_baseline_add_24"
-        android:title="Jugador" />
+        android:title="Equipo" />
     <item
         android:id="@+id/campeonatoFragment"
         android:icon="@drawable/ic_baseline_add_24"
@@ -13,5 +13,5 @@
     <item
         android:id="@+id/equipoIngresoFragment"
         android:icon="@drawable/ic_baseline_add_24"
-        android:title="Equipo" />
+        android:title="Jugadores" />
 </menu>

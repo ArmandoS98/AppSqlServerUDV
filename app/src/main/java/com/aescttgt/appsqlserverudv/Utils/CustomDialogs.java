@@ -45,7 +45,7 @@ public class CustomDialogs {
         pDialog.show();
 
         Button btnConfirmTextColor = pDialog.findViewById(R.id.confirm_button);
-        btnConfirmTextColor.setTextColor(ContextCompat.getColor(mContext, R.color.colorPrimary));
+        btnConfirmTextColor.setTextColor(ContextCompat.getColor(mContext, R.color.colorTextBlack));
 
         return pDialog;
     }

@@ -1,4 +1,4 @@
-package com.aescttgt.appsqlserverudv.ui.navViews;
+package com.aescttgt.appsqlserverudv.ui;
 
 import android.os.Bundle;
 
@@ -11,12 +11,12 @@ import android.view.ViewGroup;
 import com.aescttgt.appsqlserverudv.R;
 
 
-public class EquipoIngresoFragment extends Fragment {
+public class AgregarPartidoFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_equipo_ingreso, container, false);
+        return inflater.inflate(R.layout.fragment_agregar_partido, container, false);
     }
 }

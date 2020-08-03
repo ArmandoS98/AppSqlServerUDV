@@ -9,14 +9,14 @@
         android:id="@+id/nav_home"
         android:name="com.aescttgt.appsqlserverudv.ui.DashboardFragment"
         android:label="@string/dashboard"
-        tools:layout="@layout/fragment_home" >
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_nav_home_to_partidoDetalleFragment"
             app:destination="@id/partidoDetalleFragment" />
     </fragment>
 
     <fragment
-        android:id="@+id/nav_gallery"
+        android:id="@+id/nav_detalle_equipo"
         android:name="com.aescttgt.appsqlserverudv.ui.AgregarFragment"
         android:label="@string/agregar"
         tools:layout="@layout/fragment_gallery" />
@@ -29,13 +29,13 @@
 
     <fragment
         android:id="@+id/nav_actualizar"
-        android:name="com.aescttgt.appsqlserverudv.ui.ActualizarFragment"
+        android:name="com.aescttgt.appsqlserverudv.ui.AgregarJugadorFragment"
         android:label="@string/actualizar"
         tools:layout="@layout/fragment_actualizar" />
 
     <fragment
         android:id="@+id/nav_eliminar"
-        android:name="com.aescttgt.appsqlserverudv.ui.EliminarFragment"
+        android:name="com.aescttgt.appsqlserverudv.ui.FichajeFragment"
         android:label="@string/eliminar"
         tools:layout="@layout/fragment_eliminar" />
 
@@ -47,6 +47,26 @@
     <fragment
         android:id="@+id/partidoDetalleFragment"
         android:name="com.aescttgt.appsqlserverudv.ui.dashView.PartidoDetalleFragment"
-            android:label="Partido Detalle"
+        android:label="Partido Detalle"
         tools:layout="@layout/fragment_partido_detalle" />
+    <fragment
+        android:id="@+id/nav_gallery"
+        android:name="com.aescttgt.appsqlserverudv.ui.EquipoFragment"
+        android:label="Equipo"
+        tools:layout="@layout/fragment_equipo" />
+    <fragment
+        android:id="@+id/jugadorDetalleFragment"
+        android:name="com.aescttgt.appsqlserverudv.ui.JugadorDetalleFragment"
+        android:label="Jugador Detalle"
+        tools:layout="@layout/fragment_jugador_detalle" />
+    <fragment
+        android:id="@+id/nav_eLiminar_Entrenador"
+        android:name="com.aescttgt.appsqlserverudv.ui.EliminarEntrenadoFragment"
+        android:label="@string/eliminar_entrenador"
+        tools:layout="@layout/fragment_eliminar_entrenado" />
+    <fragment
+        android:id="@+id/nav_agregar_Partido"
+        android:name="com.aescttgt.appsqlserverudv.ui.AgregarPartidoFragment"
+        android:label="Agregar Partido"
+        tools:layout="@layout/fragment_agregar_partido" />
 </navigation>
